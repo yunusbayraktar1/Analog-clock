@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <svg width="800" height="800">
+        <circle class="small-lines" cx="400" cy="400" r="365" fill="none" stroke-dasharray="2,36.2" stroke-width="20">
+        </circle>
+
+        <circle class="big-lines" cx="400" cy="400" r="350" fill="none" stroke-dasharray="8,175.1666" stroke-width="50">
+        </circle>
+        <circle cx="400" cy="400" r="8" fill="red"></circle>
+        <line class="second-hand" x1="400" y1="400" x2="400" y2="50" stroke="red" stroke-width="3">
+        </line>
+        <line class="minute-hand" x1="400" y1="400" x2="400" y2="150" stroke="#E81C6F" stroke-width="6">
+        </line>
+        <line class="hour-hand" x1="400" y1="400" x2="400" y2="250" stroke="#E81C6F" stroke-width="10">
+        </line>
+    </svg>
+    <script>
+
+        function timeFnc() {
+            let now = new Date();
+            let hourHand = document.querySelector(".hour-hand");
+            hourHand.style = `transform: rotate(${now.getHours() * 30}deg)`;
+            let minuteHand = document.querySelector(".minute-hand");
+            minuteHand.style = `transform: rotate(${now.getMinutes() * 6}deg)`;
+            let secondHand = document.querySelector(".second-hand");
+            secondHand.style = `transform: rotate(${now.getSeconds() * 6}deg)`;
+        }
+        setInterval(timeFnc, 1000);
+        timeFnc();
+    </script>
+</body>
+
+</html>
